@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href = "@{/styles/style.css}" rel="stylesheet">
+    <title>WriteUp :: REGISTER</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<div class ="container">
+    <div class="screen">
+        <div class="screen__content">
+            <div class="screen__welcome__title">
+                <h2>
+                    <span class="multicolortext">Welcome to WriteUp</span>
+                </h2>
+            </div>
+            <div class="screen__welcome__paragraph">
+                <p><span class="multicolortextparagraph">Please register to start using our platform!</span></p>
+            </div>
+            <form class="register" action="#" th:action="@{/register}" th:object="${account}" method="POST">
+                <div class="register__field">
+                    <i class="register__icon fas fa-user"></i>
+                    <input class="register__input" type="text" th:field="*{userName}" name="Username" placeholder="Username" required="">
+                </div>
+                <div class="register__field">
+                    <i class="register__icon fas fa-user"></i>
+                    <input class="register__input" type="text" th:field="*{firstName}" name="FirstName" placeholder="First Name" required="">
+                </div>
+                <div class="register__field">
+                    <i class="register__icon fas fa-user"></i>
+                    <input class="register__input" type="text" th:field="*{lastName}" name="LastName" placeholder="Last Name" required="">
+                </div>
+                <div class="register__field">
+                    <i class="register__icon fas fa-user"></i>
+                    <input class="register__input" type="email" th:field="*{email}" name="email" placeholder="Email" required="">
+                </div>
+                <div class="register__field">
+                    <i class="register__icon fas fa-lock"></i>
+                    <input class="register__input" type="password" th:field="*{password}" name="password" placeholder="Password" required="">
+                </div>
+                <button class="buton register__submit">
+                    <span class="button_text">Register</span>
+                    <i class="button__icon fas fa-chevron-right"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="screen__background">
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

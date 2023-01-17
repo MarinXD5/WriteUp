@@ -1,0 +1,3 @@
+2022-11-02 12:43:05 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ID" not found; SQL statement:
+SELECT * FROM ID [42102-214]

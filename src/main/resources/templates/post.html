@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html  lang= "en" xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href = "@{/styles/style.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/styles/javascript.js}" rel="script"></script>
+    <title>WriteUp :: POST</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+
+<a th:href="@{/}">Home</a>
+
+<div class="container">
+    <div class="screen">
+        <div class="screen__content">
+            <div class="card" style="width: 120%; height: 100%">
+                <a href="#" class="like-btn">
+                    <svg class="like_icon" width="44" height="39" viewBox="0 0 44 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2C6.925 2 2 6.925 2 13C2 24 15 34 22 36.326C29 34 42 24 42 13C42 6.925 37.075 2 31 2C27.28 2 23.99 3.847 22 6.674C20.9857
+      5.22921 19.6382 4.05009 18.0715 3.23649C16.5049 2.42289 14.7653 1.99875 13 2Z"/>
+                    </svg>
+                </a>
+                <div class="card-body">
+                    <ul sec:authorize="isAuthenticated()">
+                        <li><a th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit</a></li>
+                        <li><a th:href="@{'/posts/' + ${post.id} + '/delete'}">Delete</a></li>
+                    </ul>
+                    <h2 class="card-title" th:text="${post.title}">Card title</h2>
+                    <p class="card-text" th:text="'Written by: ' + ${post.account.getUserName()}"></p>
+                    <p class="card-text" th:text="'Published on: ' + ${post.createdAt}"></p>
+                    <p class="card-text" th:text="${post.body}">Body text</p>
+
+                    <h2>Comments</h2>
+                    <div th:replace="comments :: comments(comments=${comments})"></div>
+
+                    <h3>Add a comment</h3>
+                    <form method="post" action="#" th:action="@{/posts/{postId}/comment(postId=${post.id})}">
+                        <input type="text" name="commentText" placeholder="Add a comment">
+                        <button type="submit">Comment</button>
+                    </form>
+
+                    <div th:replace="comments :: comments(comments=${comments})"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

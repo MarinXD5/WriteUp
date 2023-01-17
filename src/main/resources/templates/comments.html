@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment="comments(comments)">
+    <ul>
+        <li th:each="comment : ${comments}">
+            <p th:text="${comment.text}"></p>
+            <form method="post" action="#" th:action="@{/comment/{commentId}/reply(commentId=${comment.id})}">
+                <input type="text" name="replyText" placeholder="Add a reply">
+                <button type="submit">Reply</button>
+            </form>
+            <div th:replace="comments :: comments(comments=${commentRepository.findByParentCommentIsNullOrderByCreatedAtDesc(comment)})" ></div>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

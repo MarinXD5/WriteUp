@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href = "@{/styles/style.css}" rel="stylesheet">
+    <title>WriteUp :: NEW POST</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+
+<a th:href="@{/}">Home</a>
+
+<div class ="container">
+    <div class="screen">
+        <div class="screen__content">
+            <div class="post__card">
+                <form action="#" th:action="@{'/posts/{id}'(id=${post.id})}" th:object="${post}" method="POST">
+                    <input type="hidden" th:field="*{account}" />
+                    <input type="hidden" th:field="*{createdAt}" />
+                    <h2>Update Post</h2>
+                    <div class="new__post__title">
+                        <label for="new-post-title">Title</label>
+                        <input id="new-post-title" type="text" th:field="*{title}" placeholder="Title"/>
+                    </div>
+                    <div class="new__post__body">
+                        <label for="new-post-body">Body</label>
+                        <textarea id="new-post-body" th:field="*{body}"></textarea>
+                    </div>
+
+                    <button type="submit">Update Post</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="screen__background">
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
